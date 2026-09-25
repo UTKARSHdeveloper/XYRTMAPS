@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Intelligent Route Engine</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <div class="brand-mark">IR</div>
+        <div>
+          <div class="brand-title">Intelligent Route</div>
+          <div class="brand-subtitle">Executable-route engine</div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="section-title">PLAN A TRIP</div>
+        <label for="origin">Start</label>
+        <div class="input-row">
+          <input id="origin" type="text" value="Current location" placeholder="Current location or address" autocomplete="off" />
+          <button id="locateBtn" class="icon-btn" type="button" title="Use current location">⌖</button>
+        </div>
+
+        <label for="destination">Destination</label>
+        <input id="destination" type="text" placeholder="e.g. New Delhi Railway Station" autocomplete="off" />
+
+        <div class="option-grid">
+          <label class="check"><input id="avoidTolls" type="checkbox" /><span>Avoid tolls</span></label>
+          <label class="check"><input id="avoidHighways" type="checkbox" /><span>Avoid highways</span></label>
+        </div>
+
+        <button id="routeBtn" class="primary-btn" type="button">Find intelligent route</button>
+        <div id="status" class="status" role="status">Loading map…</div>
+      </section>
+
+      <section id="decisionPanel" class="panel hidden">
+        <div class="section-title">ROUTE INTELLIGENCE</div>
+        <div id="decisionHeadline" class="decision-headline">—</div>
+        <p id="decisionReason" class="decision-reason">—</p>
+        <div id="decisionBadges" class="badges"></div>
+      </section>
+
+      <section id="routesPanel" class="panel hidden">
+        <div class="section-title">ROUTE CANDIDATES</div>
+        <div id="routeList" class="route-list"></div>
+      </section>
+
+      <section class="panel methodology">
+        <div class="section-title">WHAT THE ENGINE CONSIDERS</div>
+        <ul>
+          <li>Live traffic-aware ETA</li>
+          <li>Achievable average speed</li>
+          <li>Traffic delay vs normal conditions</li>
+          <li>U-turns, merges and difficult turns</li>
+          <li>Distance and route practicality</li>
+        </ul>
+      </section>
+
+      <footer>Google Maps Platform supplies map and routing data. This prototype adds the decision layer.</footer>
+    </aside>
+
+    <main class="map-wrap">
+      <div id="map" aria-label="Navigation map"></div>
+      <div class="map-pill"><span class="live-dot"></span> Traffic-aware routing</div>
+      <div id="loading" class="loading hidden"><span class="spinner"></span>Analyzing route candidates…</div>
+      <div id="errorBox" class="error-box hidden" role="alert"></div>
+    </main>
+  </div>
+
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

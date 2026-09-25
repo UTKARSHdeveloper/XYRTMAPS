@@ -1,0 +1,6 @@
+# Local/private Google key file
+auth.local.js
+.env
+.env.*
+node_modules/
+.DS_Store
